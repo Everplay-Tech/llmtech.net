@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiMANAC Privacy Policy — Everplay-Tech</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    h1 { font-size: 1.8rem; color: #fff; margin-bottom: 4px; }
+    .meta { color: #666; font-size: 0.85rem; margin-bottom: 36px; }
+    h2 { font-size: 1.15rem; color: #fff; margin-top: 32px; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; }
+    p { color: #ccc; font-size: 0.95rem; margin-bottom: 12px; }
+    ul { color: #ccc; font-size: 0.95rem; margin-bottom: 12px; padding-left: 24px; }
+    li { margin-bottom: 6px; }
+    strong { color: #fff; }
+    .highlight { background: #0d1f0d; border: 1px solid #1a3a1a; border-radius: 8px; padding: 16px; margin: 16px 0; }
+    .highlight p { color: #7ddb7d; margin-bottom: 0; }
+    .address { background: #151515; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-top: 16px; }
+    .address p { color: #999; margin-bottom: 4px; font-size: 0.9rem; }
+    a { color: #00ff41; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back { display: inline-block; margin-bottom: 24px; color: #666; font-size: 0.85rem; }
+    .back:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">&larr; Everplay-Tech</a>
+    <h1>AiMANAC Privacy Policy</h1>
+    <p class="meta">Effective: March 25, 2026 &middot; Last Updated: March 25, 2026</p>
+
+    <h2>Overview</h2>
+    <p>AiMANAC is an AI management platform that you own and control. Your data stays on your devices and your self-hosted server. We do not operate servers on your behalf, collect telemetry, or access your data.</p>
+
+    <h2>What We Collect</h2>
+    <div class="highlight">
+      <p><strong>We collect nothing.</strong></p>
+    </div>
+    <p>AiMANAC does not phone home. There is no analytics SDK, no crash reporting enabled by default, no usage tracking, no advertising identifiers, and no telemetry of any kind.</p>
+
+    <h2>What You Store (On Your Own Infrastructure)</h2>
+    <p>When you use AiMANAC, the following data is stored on <strong>your</strong> self-hosted backend server and device:</p>
+    <ul>
+      <li><strong>Chat messages</strong> — Conversations with AI providers, stored in your PostgreSQL database</li>
+      <li><strong>API keys</strong> — Encrypted via IHP Capsule Protocol (AES-256-GCM) on your server, never on device</li>
+      <li><strong>Workspace configurations</strong> — Names, settings, workflow definitions</li>
+      <li><strong>Artifacts</strong> — AI-generated outputs saved to your library</li>
+      <li><strong>Usage metrics</strong> — Token counts and cost tracking, stored locally</li>
+      <li><strong>Authentication tokens</strong> — JWT tokens stored in iOS Keychain / Android Keystore</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>AiMANAC connects to AI providers <strong>only when you explicitly configure them</strong> by providing your own API keys. These providers include but are not limited to:</p>
+    <ul>
+      <li>Anthropic (Claude)</li>
+      <li>OpenAI (GPT, o-series)</li>
+      <li>Google (Gemini)</li>
+      <li>DeepSeek</li>
+      <li>Perplexity</li>
+      <li>Local AI servers (Ollama, LM Studio, etc.)</li>
+    </ul>
+    <p>When you send a message, your prompt is transmitted directly from your backend server to the AI provider you selected. AiMANAC does not proxy, intercept, store, or analyze this traffic beyond what is necessary to display the response to you.</p>
+    <p>Each provider has its own privacy policy. You are responsible for reviewing them before providing your API key.</p>
+
+    <h2>Apple Sign In</h2>
+    <p>AiMANAC supports optional Sign in with Apple for account creation. If you use this feature:</p>
+    <ul>
+      <li>Your Apple-provided user identifier is stored on your backend server</li>
+      <li>Your email (if shared) is stored on your backend server</li>
+      <li>Apple's relay email service is supported</li>
+      <li>Sign-in is <strong>optional</strong> — the app functions fully without an account</li>
+    </ul>
+
+    <h2>Data Encryption</h2>
+    <p>All API keys are encrypted using the IHP Capsule Protocol:</p>
+    <ul>
+      <li>HKDF-SHA256 key derivation (master, profile, and session keys)</li>
+      <li>AES-256-GCM authenticated encryption</li>
+      <li>Data flow classification (LOCAL/LAN/CLOUD) is cryptographically enforced — not just policy</li>
+      <li>Configuration exports use ChaCha20-Poly1305 with PBKDF2 (600,000 iterations)</li>
+    </ul>
+
+    <h2>Your Rights</h2>
+    <p>You have complete control over your data:</p>
+    <ul>
+      <li><strong>Access</strong> — All data is on your server. Query your database directly.</li>
+      <li><strong>Export</strong> — Use the in-app config export feature (encrypted .qyn1 bundle) or access your PostgreSQL database.</li>
+      <li><strong>Deletion</strong> — Delete your account in Settings. This cascades to all associated data on your server. You can also delete your database entirely — it's yours.</li>
+      <li><strong>Portability</strong> — Your data is in standard PostgreSQL. Export it anytime in any format.</li>
+    </ul>
+
+    <h2>Children's Privacy</h2>
+    <p>AiMANAC is not directed at children under 13. We do not knowingly collect personal information from children. Since we collect no information from anyone, this is inherently satisfied.</p>
+
+    <h2>Data Retention</h2>
+    <p>We retain nothing — we have no servers, no databases, no logs. Your self-hosted backend retains data according to your own configuration:</p>
+    <ul>
+      <li>Chat messages: retained until you delete them</li>
+      <li>Audit logs: 90-day default retention (configurable)</li>
+      <li>Usage metrics: retained until you delete them</li>
+    </ul>
+
+    <h2>No DRM, No License Validation</h2>
+    <p>AiMANAC performs zero license checks, zero phone-home requests, and zero feature gating based on network calls to our servers. The app you purchase is fully functional offline on first launch.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We will update this policy if our practices change. The "Last Updated" date at the top reflects the most recent revision. Since we collect no data, material changes are unlikely.</p>
+
+    <h2>Contact</h2>
+    <div class="address">
+      <p><strong>Everplay-Tech</strong></p>
+      <p>980 N Michigan Ave Ste 1090 PMB 150367</p>
+      <p>Chicago, Illinois 60611-4521 US</p>
+      <p style="margin-top: 12px;"><a href="mailto:privacy@everplay-tech.com">privacy@everplay-tech.com</a></p>
+    </div>
+  </div>
+</body>
+</html>
