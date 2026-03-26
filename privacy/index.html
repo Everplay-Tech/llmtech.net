@@ -44,7 +44,7 @@
     <p>When you use AiMANAC, the following data is stored on <strong>your</strong> self-hosted backend server and device:</p>
     <ul>
       <li><strong>Chat messages</strong> — Conversations with AI providers, stored in your PostgreSQL database</li>
-      <li><strong>API keys</strong> — Encrypted via IHP Capsule Protocol (AES-256-GCM) on your server, never on device</li>
+      <li><strong>API keys</strong> — Encrypted via IHP Capsule Protocol on your server, never on device</li>
       <li><strong>Workspace configurations</strong> — Names, settings, workflow definitions</li>
       <li><strong>Artifacts</strong> — AI-generated outputs saved to your library</li>
       <li><strong>Usage metrics</strong> — Token counts and cost tracking, stored locally</li>
@@ -74,13 +74,7 @@
     </ul>
 
     <h2>Data Encryption</h2>
-    <p>All API keys are encrypted using the IHP Capsule Protocol:</p>
-    <ul>
-      <li>HKDF-SHA256 key derivation (master, profile, and session keys)</li>
-      <li>AES-256-GCM authenticated encryption</li>
-      <li>Data flow classification (LOCAL/LAN/CLOUD) is cryptographically enforced — not just policy</li>
-      <li>Configuration exports use ChaCha20-Poly1305 with PBKDF2 (600,000 iterations)</li>
-    </ul>
+    <p>All API keys are encrypted using the IHP Capsule Protocol with authenticated encryption. Data flow classification (LOCAL/LAN/CLOUD) is cryptographically enforced — not just policy. Keys are mathematically bound to their permitted data flow class; misuse attempts fail at the cryptographic layer, not an application check. Configuration exports use password-based authenticated encryption.</p>
 
     <h2>Your Rights</h2>
     <p>You have complete control over your data:</p>
