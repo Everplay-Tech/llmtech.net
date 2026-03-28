@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AiMANAC Setup Guide — Everplay-Tech</title>
+  <title>AiMANAC Setup Guide &mdash; Everplay-Tech</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
     .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
     h1 { font-size: 1.8rem; color: #fff; margin-bottom: 4px; }
-    .meta { color: #666; font-size: 0.85rem; margin-bottom: 36px; }
+    .meta { color: #666; font-size: 0.85rem; margin-bottom: 36px; font-style: italic; }
     h2 { font-size: 1.15rem; color: #fff; margin-top: 40px; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 6px; }
     h3 { font-size: 1rem; color: #ccc; margin-top: 20px; margin-bottom: 8px; }
     p { color: #ccc; font-size: 0.95rem; margin-bottom: 12px; }
     ul, ol { color: #ccc; font-size: 0.95rem; margin-bottom: 12px; padding-left: 24px; }
     li { margin-bottom: 8px; }
     strong { color: #fff; }
+    em { color: #aaa; }
     code { background: #151515; border: 1px solid #333; border-radius: 4px; padding: 2px 6px; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 0.85rem; color: #00ff41; }
     pre { background: #0d0d0d; border: 1px solid #222; border-radius: 8px; padding: 16px; margin: 16px 0; overflow-x: auto; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 0.85rem; color: #00ff41; line-height: 1.5; }
     .highlight { background: #0d1f0d; border: 1px solid #1a3a1a; border-radius: 8px; padding: 16px; margin: 16px 0; }
@@ -41,6 +42,7 @@
     .toc a { color: #ccc; display: block; padding: 4px 0; font-size: 0.9rem; }
     .toc a:hover { color: #00ff41; }
     .badge { display: inline-block; background: #00ff4120; color: #00ff41; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-family: monospace; }
+    .quote { border-left: 3px solid #00ff41; padding: 12px 16px; margin: 16px 0; background: #0a0f0a; font-style: italic; color: #aaa; }
     hr { border: none; border-top: 1px solid #222; margin: 32px 0; }
     @media (max-width: 480px) {
       .provider-grid { grid-template-columns: 1fr; }
@@ -52,101 +54,110 @@
   <div class="container">
     <a href="/" class="back">&larr; Everplay-Tech</a>
 
-    <h1>AiMANAC Setup Guide</h1>
-    <p class="meta">Everything you need to get AiMANAC running on your phone and server.</p>
+    <h1>The AiMANAC Field Manual</h1>
+    <p class="meta">For the curious, the brave, and the people who read manuals. You know who you are.</p>
 
     <div class="toc">
-      <strong style="color:#fff; display:block; margin-bottom:8px;">Contents</strong>
-      <a href="#overview">1. What is AiMANAC?</a>
-      <a href="#first-launch">2. First Launch &amp; On-Device AI</a>
-      <a href="#backend">3. Setting Up Your Backend Server</a>
-      <a href="#providers">4. Connecting AI Providers</a>
-      <a href="#workspaces">5. Workspaces &amp; Channels</a>
-      <a href="#production">6. The Production System</a>
-      <a href="#helm">7. HELM &mdash; Your AI Command Center</a>
-      <a href="#security">8. Security &amp; Privacy</a>
-      <a href="#troubleshooting">9. Troubleshooting</a>
+      <strong style="color:#fff; display:block; margin-bottom:8px;">Table of Contents</strong>
+      <a href="#overview">1. What You Just Bought (Congratulations)</a>
+      <a href="#first-launch">2. First Launch &amp; The Brain in Your Pocket</a>
+      <a href="#backend">3. Your Server, Your Rules</a>
+      <a href="#providers">4. Bring Your Own Brains</a>
+      <a href="#workspaces">5. Workspaces &amp; Channels (Or: Where Things Live)</a>
+      <a href="#production">6. The Four-Lane Machine</a>
+      <a href="#helm">7. HELM &mdash; The Captain's Chair</a>
+      <a href="#security">8. The Vault (Security &amp; Privacy)</a>
+      <a href="#troubleshooting">9. When Things Go Sideways</a>
     </div>
 
     <!-- ─── 1. OVERVIEW ─── -->
-    <h2 id="overview">1. What is AiMANAC?</h2>
-    <p>AiMANAC is a <strong>one-time purchase</strong> ($9.99) AI management app. Unlike subscription services, you own it forever and run your own backend server. Your API keys, data, and conversations stay on <strong>your infrastructure</strong>.</p>
+    <h2 id="overview">1. What You Just Bought (Congratulations)</h2>
+    <p>So here you are. You paid <strong>$9.99</strong> &mdash; once, forever, like buying a book or a really good sandwich &mdash; and now you own an AI management system. Not a subscription. Not a "free tier" with a gun to your head. You <em>own</em> this thing.</p>
 
-    <div class="highlight">
-      <p><strong>Key principle:</strong> AiMANAC never phones home. Zero telemetry, zero DRM, zero license validation. You buy a synthesizer, not rent one.</p>
-    </div>
+    <div class="quote">You bought a synthesizer. You did not rent one. This distinction matters more than you think.</div>
+
+    <p>AiMANAC does not phone home. It does not track you. It does not sell your prompts to the highest bidder so they can train a model that replaces you. There is no telemetry. There is no DRM. There is no license server watching you sleep.</p>
 
     <p>What you get:</p>
     <ul>
-      <li><strong>10 AI providers</strong> managed from one interface</li>
-      <li><strong>On-device AI</strong> (Phi-4 Mini) &mdash; works offline, free forever</li>
-      <li><strong>HELM</strong> &mdash; AI command center with production control tools</li>
-      <li><strong>4-lane production system</strong> &mdash; DAW-style workflow automation</li>
-      <li><strong>IHP cryptographic security</strong> &mdash; mathematical data flow enforcement</li>
-      <li><strong>Dual themes</strong> &mdash; Terminal (hacker) and Executive (professional)</li>
+      <li><strong>10 AI providers</strong> wired into one interface &mdash; swap between them like changing channels</li>
+      <li><strong>On-device AI</strong> (Phi-4 Mini) &mdash; a neural network living in your phone, free as air, needs no internet</li>
+      <li><strong>HELM</strong> &mdash; your AI command center with real production control tools</li>
+      <li><strong>A 4-lane production system</strong> modeled on music DAWs &mdash; because "workflow builder" is a phrase that puts people to sleep</li>
+      <li><strong>IHP cryptographic security</strong> &mdash; your keys are mathematically bound to their intended destinations. Not an if-statement. Math.</li>
+      <li><strong>Two themes</strong> &mdash; Terminal (for the hackers) and Executive (for the people who sign the checks)</li>
     </ul>
 
+    <div class="highlight">
+      <p>Everything runs on <strong>your</strong> hardware. Your phone. Your server. Your API keys on your machine. We are not in the loop. We don't want to be in the loop. The loop is yours.</p>
+    </div>
+
     <!-- ─── 2. FIRST LAUNCH ─── -->
-    <h2 id="first-launch">2. First Launch &amp; On-Device AI</h2>
-    <p>When you first open AiMANAC, you'll go through a brief onboarding:</p>
+    <h2 id="first-launch">2. First Launch &amp; The Brain in Your Pocket</h2>
+    <p>When you first open AiMANAC, a gentle onboarding will ask you three things. Just three. We believe in you and we respect your time:</p>
     <ol>
-      <li>Choose your theme (Terminal or Executive)</li>
-      <li>Optionally sign in with Apple</li>
-      <li>Create your first workspace</li>
+      <li>Pick your theme (Terminal or Executive &mdash; you can change this later, it's not a tattoo)</li>
+      <li>Optionally sign in with Apple (truly optional &mdash; the app works fine without it)</li>
+      <li>Name your first workspace</li>
     </ol>
 
-    <p>After onboarding, you'll land on <strong>HELM</strong> &mdash; the home screen.</p>
+    <p>Then you land on <strong>HELM</strong> &mdash; the home screen, the bridge, the captain's chair. More on that in section 7.</p>
 
-    <h3>Setting Up On-Device AI (Optional but Recommended)</h3>
-    <p>Phi-4 Mini runs entirely on your phone. No internet needed. Free. Private.</p>
+    <h3>The Brain in Your Pocket (Phi-4 Mini)</h3>
+    <p>Here is the beautiful, improbable thing: there is a 3.8-billion-parameter neural network that can run <em>entirely on your phone</em>. No internet. No cloud. No corporate middleman watching you think. Free. Forever. Like air.</p>
+
+    <p>It's called Phi-4 Mini, and setting it up goes like this:</p>
 
     <div class="step">
       <span class="step-num">1</span>
-      <div class="step-content"><p>Open <strong>Settings</strong> (sidebar &rarr; Settings, or shake your phone)</p></div>
+      <div class="step-content"><p>Open <strong>Settings</strong> (sidebar &rarr; gear icon, or shake your phone &mdash; yes, really, shake it)</p></div>
     </div>
     <div class="step">
       <span class="step-num">2</span>
-      <div class="step-content"><p>Scroll to <strong>On-Device AI</strong> section</p></div>
+      <div class="step-content"><p>Scroll to <strong>On-Device AI</strong></p></div>
     </div>
     <div class="step">
       <span class="step-num">3</span>
-      <div class="step-content"><p>Tap <strong>Download</strong> on Phi-4 Mini (~2.3 GB)</p></div>
+      <div class="step-content"><p>Tap <strong>Download</strong> on Phi-4 Mini (~2.3 GB &mdash; go make a coffee)</p></div>
     </div>
     <div class="step">
       <span class="step-num">4</span>
-      <div class="step-content"><p>Once downloaded, tap <strong>Activate</strong></p></div>
+      <div class="step-content"><p>Once it's done, tap <strong>Activate</strong></p></div>
     </div>
     <div class="step">
       <span class="step-num">5</span>
-      <div class="step-content"><p>Go back to HELM &mdash; it auto-switches to local AI</p></div>
+      <div class="step-content"><p>Go back to HELM &mdash; it auto-detects the local brain and switches over</p></div>
     </div>
 
     <div class="highlight">
-      <p>Phi-4 Mini handles setup guidance, feature explanations, and conversation. For workflow control and production tools, you'll need a cloud provider.</p>
+      <p>Phi-4 knows this app inside and out. Ask it how to set things up, what features exist, how to build workflows. It'll help. For the heavy stuff &mdash; actually <em>running</em> workflows and triggering tools &mdash; you'll want a cloud provider. But that's your call, not ours.</p>
     </div>
 
     <!-- ─── 3. BACKEND ─── -->
-    <h2 id="backend">3. Setting Up Your Backend Server</h2>
-    <p>AiMANAC requires a self-hosted backend. This is where your API keys are stored (encrypted via IHP capsules) and where AI requests are processed.</p>
+    <h2 id="backend">3. Your Server, Your Rules</h2>
+    <p>AiMANAC needs a backend server. "But wait," you say, "I thought there was no subscription!" There isn't. You <em>run your own server</em>. On your computer. On a Raspberry Pi. On a $5/month VPS. On that old laptop in your closet. Wherever you want.</p>
 
-    <h3>Quick Start with Docker</h3>
+    <p>This is where your API keys live (encrypted, not in plaintext &mdash; we're not animals). This is where AI requests get processed. This is the trust boundary. Everything inside it is yours.</p>
+
+    <h3>The Docker Way (Recommended)</h3>
+    <p>Four commands. That's it. I've seen people spend longer choosing a font.</p>
     <pre>git clone https://github.com/Everplay-Tech/AiMANAC.git
 cd AiMANAC/backend
 cp .env.example .env
 # Edit .env — set ENCRYPTION_KEY (any random 64-char hex string)
 docker compose up -d</pre>
 
-    <p>This starts:</p>
+    <p>This spins up three things in nice little containers:</p>
     <ul>
-      <li><strong>AiMANAC Backend</strong> on port 3000</li>
-      <li><strong>PostgreSQL 14</strong> with pgvector on port 5432</li>
-      <li><strong>Redis 7</strong> on port 6379</li>
+      <li><strong>AiMANAC Backend</strong> on port 3000 &mdash; the brain stem</li>
+      <li><strong>PostgreSQL 14</strong> with pgvector on port 5432 &mdash; where memories live</li>
+      <li><strong>Redis 7</strong> on port 6379 &mdash; the fast-twitch muscle fiber</li>
     </ul>
 
-    <h3>Connect Your Phone</h3>
+    <h3>Point Your Phone at It</h3>
     <div class="step">
       <span class="step-num">1</span>
-      <div class="step-content"><p>Find your server's IP address (e.g., <code>192.168.1.50</code>)</p></div>
+      <div class="step-content"><p>Find your server's IP address (<code>ifconfig</code> or <code>ip addr</code> &mdash; look for something like <code>192.168.1.50</code>)</p></div>
     </div>
     <div class="step">
       <span class="step-num">2</span>
@@ -154,18 +165,19 @@ docker compose up -d</pre>
     </div>
     <div class="step">
       <span class="step-num">3</span>
-      <div class="step-content"><p>In <strong>Backend Server</strong>, enter: <code>http://192.168.1.50:3000/api/v1</code></p></div>
+      <div class="step-content"><p>Under <strong>Backend Server</strong>, type: <code>http://192.168.1.50:3000/api/v1</code></p></div>
     </div>
     <div class="step">
       <span class="step-num">4</span>
-      <div class="step-content"><p>Tap <strong>Connect</strong> &mdash; the status should turn green</p></div>
+      <div class="step-content"><p>Tap <strong>Connect</strong> &mdash; the dot goes green, and you're in business</p></div>
     </div>
 
     <div class="warning">
-      <p><strong>Important:</strong> Your phone and server must be on the same network (WiFi). For remote access, set up a VPN or reverse proxy with HTTPS.</p>
+      <p><strong>Important neighborhood rule:</strong> Your phone and server need to be on the same WiFi network. For remote access, set up a VPN or reverse proxy. Don't just expose port 3000 to the internet unless you enjoy chaos.</p>
     </div>
 
-    <h3>Minimum .env Configuration</h3>
+    <h3>The Minimum .env</h3>
+    <p>Six lines between you and a working server. Fewer lines than a haiku, if haikus needed encryption keys.</p>
     <pre>NODE_ENV=production
 PORT=3000
 DATABASE_URL=postgresql://user:pass@localhost:5432/aimanac
@@ -174,50 +186,52 @@ ENCRYPTION_KEY=your-64-char-hex-string
 JWT_SECRET=your-jwt-secret</pre>
 
     <!-- ─── 4. PROVIDERS ─── -->
-    <h2 id="providers">4. Connecting AI Providers</h2>
-    <p>AiMANAC supports 10 providers. You only need <strong>one</strong> to get started. Your API keys are stored encrypted on your server, never on your phone.</p>
+    <h2 id="providers">4. Bring Your Own Brains</h2>
+    <p>This is where it gets genuinely exciting. AiMANAC supports <strong>10 AI providers</strong>. You need exactly <strong>one</strong> to get started. Your API keys are stored encrypted on your server &mdash; never on your phone, never on our servers (we don't have servers &mdash; that's the point).</p>
+
+    <p>Think of it like a recording studio. Each provider is an instrument. You don't need all of them. But having options? That's when the music gets interesting.</p>
 
     <div class="provider-grid">
       <div class="provider-card">
         <div class="name">Claude <span class="badge">RECOMMENDED</span></div>
-        <div class="desc">Best reasoning &amp; tool support. Works best with HELM.</div>
+        <div class="desc">The sharpest knife in the drawer. Best reasoning, best tools, best friend to HELM.</div>
         <div class="price">anthropic.com/api</div>
       </div>
       <div class="provider-card">
         <div class="name">OpenAI</div>
-        <div class="desc">GPT-4, o-series reasoning. Strong all-rounder.</div>
+        <div class="desc">The one everybody knows. GPT-4, o-series reasoning. Reliable.</div>
         <div class="price">platform.openai.com</div>
       </div>
       <div class="provider-card">
         <div class="name">Google Gemini</div>
-        <div class="desc">Speed + capability balance. Good for bulk.</div>
+        <div class="desc">Fast and doesn't complain. Good balance of speed and smarts.</div>
         <div class="price">ai.google.dev</div>
       </div>
       <div class="provider-card">
         <div class="name">DeepSeek</div>
-        <div class="desc">Cheapest cloud option. Great for cost-sensitive tasks.</div>
+        <div class="desc">Costs almost nothing. Seriously. Good for bulk work.</div>
         <div class="price">platform.deepseek.com</div>
       </div>
       <div class="provider-card">
         <div class="name">xAI (Grok)</div>
-        <div class="desc">Fast conversation. Good for quick responses.</div>
+        <div class="desc">Quick on the draw. Good for fast conversation.</div>
         <div class="price">console.x.ai</div>
       </div>
       <div class="provider-card">
         <div class="name">Custom Endpoints</div>
-        <div class="desc">Ollama, LM Studio, Venice AI, or any OpenAI-compatible API.</div>
-        <div class="price">Self-hosted</div>
+        <div class="desc">Ollama, LM Studio, Venice AI, or any OpenAI-compatible thing you've got running.</div>
+        <div class="price">Self-hosted / Your call</div>
       </div>
     </div>
 
-    <h3>How to Add a Provider</h3>
+    <h3>Plugging One In</h3>
     <div class="step">
       <span class="step-num">1</span>
-      <div class="step-content"><p>Get an API key from the provider's website (links above)</p></div>
+      <div class="step-content"><p>Get an API key from your chosen provider (links above &mdash; they all have dashboards, they all want your credit card, so it goes)</p></div>
     </div>
     <div class="step">
       <span class="step-num">2</span>
-      <div class="step-content"><p>In AiMANAC, go to <strong>Settings</strong> &rarr; scroll to <strong>AI Providers</strong></p></div>
+      <div class="step-content"><p>In AiMANAC: <strong>Settings</strong> &rarr; scroll to <strong>AI Providers</strong></p></div>
     </div>
     <div class="step">
       <span class="step-num">3</span>
@@ -229,159 +243,188 @@ JWT_SECRET=your-jwt-secret</pre>
     </div>
     <div class="step">
       <span class="step-num">5</span>
-      <div class="step-content"><p>The status dot turns <span style="color:#00ff41;">green</span> when verified</p></div>
+      <div class="step-content"><p>The status dot turns <span style="color:#00ff41;">green</span>. That's it. You did it. I'm proud of you.</p></div>
     </div>
 
-    <!-- ─── 5. WORKSPACES ─── -->
-    <h2 id="workspaces">5. Workspaces &amp; Channels</h2>
-    <p>Workspaces organize your AI conversations and workflows. Think of them as projects or departments.</p>
+    <div class="quote">Your keys live on your server. AiMANAC never sees them. We built it this way on purpose. The fact that you control your own keys is not a feature &mdash; it's the architecture.</div>
 
-    <p>Each workspace has:</p>
+    <!-- ─── 5. WORKSPACES ─── -->
+    <h2 id="workspaces">5. Workspaces &amp; Channels (Or: Where Things Live)</h2>
+    <p>Workspaces are rooms. Each room has its own conversations, its own workflows, its own AI defaults. Think of them like projects, departments, moods &mdash; whatever organizational metaphor doesn't make you want to take a nap.</p>
+
+    <p>Each workspace gives you:</p>
     <ul>
-      <li><strong>Chat Channels</strong> &mdash; conversations with AI providers</li>
-      <li><strong>Production View</strong> &mdash; 4-lane workflow system</li>
-      <li><strong>Settings</strong> &mdash; default provider, system prompt, budget</li>
+      <li><strong>Chat Channels</strong> &mdash; separate conversations with AI. Like group chats, but useful.</li>
+      <li><strong>Production View</strong> &mdash; the 4-lane workflow system (more on that next)</li>
+      <li><strong>Settings</strong> &mdash; default provider, system prompt, budget cap</li>
     </ul>
 
-    <p>Create a workspace: <strong>Sidebar &rarr; Workspaces &rarr; + button</strong></p>
+    <p>Creating one: <strong>Sidebar &rarr; Workspaces &rarr; the + button</strong>. Name it. Pick an icon. Done.</p>
 
-    <p>Each channel can override the workspace's default provider. Long-press the provider pill in chat to change per-channel.</p>
+    <p>Each channel can override the workspace's default provider. Long-press the provider pill in chat to hot-swap mid-conversation. Because sometimes you need a different tool for a different job, and that's perfectly fine.</p>
 
     <!-- ─── 6. PRODUCTION ─── -->
-    <h2 id="production">6. The Production System</h2>
-    <p>AiMANAC's production system is modeled on <strong>music DAWs</strong> (Digital Audio Workstations). Instead of audio tracks, you have AI processing lanes.</p>
+    <h2 id="production">6. The Four-Lane Machine</h2>
+    <p>Now we're getting into the weird and wonderful part. Most apps call this "workflow automation." We call it a <strong>production system</strong>, because it's modeled on music DAWs &mdash; Digital Audio Workstations. Ableton Live. AKAI MPC. Modular synthesizers with patch cables going everywhere.</p>
 
-    <h3>The 4-Lane Arrangement</h3>
+    <p>Instead of audio signals, you're routing AI outputs. Same energy. Same joy.</p>
+
+    <h3>The Four Lanes</h3>
+    <p>Every workflow has exactly four lanes. Not three. Not five. Four. Like the elements, the seasons, the Beatles at their best:</p>
     <p>
-      <span class="lane" style="background:#00BCD4;"></span><strong>&#9670; Lane 1 &mdash; Generation</strong> (Cyan)<br>
-      <span class="lane" style="background:#7C3AED;"></span><strong>&#9679; Lane 2 &mdash; Processing</strong> (Violet)<br>
-      <span class="lane" style="background:#EC4899;"></span><strong>&#9650; Lane 3 &mdash; Analysis</strong> (Pink)<br>
-      <span class="lane" style="background:#10B981;"></span><strong>&#9632; Lane 4 &mdash; Output</strong> (Green)
+      <span class="lane" style="background:#00BCD4;"></span><strong>&#9670; Lane 1 &mdash; Generation</strong> (Cyan) &mdash; where ideas are born<br>
+      <span class="lane" style="background:#7C3AED;"></span><strong>&#9679; Lane 2 &mdash; Processing</strong> (Violet) &mdash; where they get shaped<br>
+      <span class="lane" style="background:#EC4899;"></span><strong>&#9650; Lane 3 &mdash; Analysis</strong> (Pink) &mdash; where they get checked<br>
+      <span class="lane" style="background:#10B981;"></span><strong>&#9632; Lane 4 &mdash; Output</strong> (Green) &mdash; where they go out the door
     </p>
 
     <p>Each lane holds up to <strong>4 modules</strong>. Modules can:</p>
     <ul>
-      <li>Chain within a lane (module 1 output &rarr; module 2 input)</li>
-      <li>Route to other lanes (direct or send/copy)</li>
-      <li>Read from Library artifacts (shared buses)</li>
-      <li>Post results to chat channels</li>
-      <li>Save to Library as artifacts</li>
+      <li>Chain within a lane (module 1 feeds module 2 feeds module 3 &mdash; like pedals on a pedalboard)</li>
+      <li>Route to other lanes (direct send or copy, like aux sends on a mixing board)</li>
+      <li>Read from Library artifacts (shared buses &mdash; communal knowledge)</li>
+      <li>Post results to chat channels (your AI talking to your other AI's room)</li>
+      <li>Save to Library as artifacts (reusable outputs)</li>
     </ul>
 
-    <h3>Module Types</h3>
+    <h3>The Module Types</h3>
+    <p>Six flavors. Each one does exactly one thing well:</p>
     <ul>
-      <li><strong>AI Prompt</strong> &mdash; Send text to an AI provider. Supports Claude Extended Thinking, OpenAI reasoning, vision.</li>
-      <li><strong>Transform</strong> &mdash; AI-powered data reshaping ("summarize this", "convert to JSON")</li>
-      <li><strong>Conditional</strong> &mdash; Route to different lanes based on semantic AI evaluation</li>
-      <li><strong>Delay</strong> &mdash; Wait before next step (5s to 1hr)</li>
-      <li><strong>Approval Gate</strong> &mdash; Pause and wait for human confirmation</li>
-      <li><strong>Artifact Save</strong> &mdash; Save output to Library with tags</li>
+      <li><strong>AI Prompt</strong> &mdash; Send text to any provider. Claude Extended Thinking, OpenAI reasoning, vision. The workhorse.</li>
+      <li><strong>Transform</strong> &mdash; Tell it what you want in plain English: "summarize this," "convert to JSON," "make it sound like a pirate." AI-powered reshaping.</li>
+      <li><strong>Conditional</strong> &mdash; AI reads the output and makes a judgment call: does this meet the criteria? Route accordingly. Semantic evaluation, not regex.</li>
+      <li><strong>Delay</strong> &mdash; Wait. Sometimes that's the right move. 5 seconds to 1 hour.</li>
+      <li><strong>Approval Gate</strong> &mdash; Stop and wait for a human to say "yes." Because sometimes a machine shouldn't decide alone.</li>
+      <li><strong>Artifact Save</strong> &mdash; Save the output to Library with tags. Build up a knowledge base, one run at a time.</li>
     </ul>
+
+    <div class="quote">4 workflows per workspace. 4 lanes per workflow. 4 modules per lane. That's 64 possible modules humming along. Not infinite. Deliberately finite. Constraints breed creativity.</div>
 
     <!-- ─── 7. HELM ─── -->
-    <h2 id="helm">7. HELM &mdash; Your AI Command Center</h2>
-    <p>HELM is the home screen. Two tabs:</p>
+    <h2 id="helm">7. HELM &mdash; The Captain's Chair</h2>
+    <p>HELM is the home screen. It's where you sit when you want to talk to your AI and actually <em>do things</em>. Two tabs. No submenus. No hidden panels. Two tabs.</p>
 
     <div class="card">
       <h3>Chat Tab</h3>
-      <p>Talk to your AI. With a cloud provider connected, HELM has exclusive access to <strong>production control tools</strong>:</p>
+      <p>Talk to your AI. Simple as that. But here's the trick: when you have a cloud provider connected, HELM gets <strong>exclusive access to production tools</strong>. Six of them:</p>
       <ul>
-        <li><code>getProductionStatus</code> &mdash; View all workflows and modules</li>
-        <li><code>triggerWorkflow</code> / <code>triggerModule</code> &mdash; Start runs</li>
-        <li><code>pauseWorkflow</code> / <code>cancelWorkflow</code> &mdash; Control execution</li>
-        <li><code>routeToLane</code> &mdash; Inject content into a lane</li>
+        <li><code>getProductionStatus</code> &mdash; "Show me everything. All workflows. All modules. What's running, what's broken."</li>
+        <li><code>triggerWorkflow</code> / <code>triggerModule</code> &mdash; "Run this thing."</li>
+        <li><code>pauseWorkflow</code> / <code>cancelWorkflow</code> &mdash; "Stop. Wait. No, really stop."</li>
+        <li><code>routeToLane</code> &mdash; "Take this text and inject it into the Cyan lane."</li>
       </ul>
-      <p>Regular workspace chat channels retain full AI capabilities but do <strong>not</strong> have these tools.</p>
+      <p>Regular workspace chat channels get full AI capabilities &mdash; reasoning, analysis, code generation &mdash; but they do <strong>not</strong> get these tools. HELM is special. HELM is the bridge. Regular channels are the crew quarters. Both important. Different access.</p>
     </div>
 
     <div class="card">
       <h3>Controls Tab</h3>
+      <p>The dashboard. The cockpit. The mixer board:</p>
       <ul>
-        <li><strong>Provider Selector</strong> &mdash; Switch between local/cloud AI</li>
-        <li><strong>Autonomy Dial</strong> &mdash; 6 levels controlling tool execution permissions (OFF &rarr; FULL AUTO)</li>
-        <li><strong>Production Status</strong> &mdash; Live workflow/module status</li>
-        <li><strong>Cost Monitor</strong> &mdash; Spending across providers</li>
-        <li><strong>MCP Server</strong> &mdash; Desktop AI integration (Claude Code, Cursor)</li>
+        <li><strong>Provider Selector</strong> &mdash; switch between local and cloud AI with one tap</li>
+        <li><strong>Autonomy Dial</strong> &mdash; how much freedom does HELM get? (see below)</li>
+        <li><strong>Production Status</strong> &mdash; live view of all workflows and modules</li>
+        <li><strong>Cost Monitor</strong> &mdash; what you're spending, per provider, in real time</li>
+        <li><strong>MCP Server</strong> &mdash; connect desktop AI tools (Claude Code, Cursor) to your system</li>
       </ul>
     </div>
 
-    <h3>Autonomy Levels</h3>
+    <h3>The Autonomy Dial (This Is Important)</h3>
+    <p>The dial has six positions. Like a volume knob, but for trust:</p>
     <ul>
-      <li><strong>0 OFF</strong> &mdash; Tools disabled. Text-only responses.</li>
-      <li><strong>1 SUGGEST</strong> &mdash; HELM suggests tool calls, waits for approval.</li>
-      <li><strong>2 ASK</strong> &mdash; Shows intent preview with cost estimate.</li>
-      <li><strong>3 SMART</strong> (default) &mdash; Read-only tools auto-execute. Mutations need confirmation.</li>
-      <li><strong>4 NOTIFY</strong> &mdash; All tools auto-execute with notifications.</li>
-      <li><strong>5 FULL AUTO</strong> &mdash; Full autonomy. Circuit breaker still active.</li>
+      <li><strong>0 &mdash; OFF</strong> &mdash; Tools disabled. HELM can talk but not touch. Training wheels.</li>
+      <li><strong>1 &mdash; SUGGEST</strong> &mdash; HELM proposes tool calls. You approve each one. Very polite.</li>
+      <li><strong>2 &mdash; ASK</strong> &mdash; Shows you what it wants to do with a cost estimate. Informed consent.</li>
+      <li><strong>3 &mdash; SMART</strong> (default) &mdash; Read-only tools auto-execute. Anything that <em>changes</em> things asks first. The sensible middle ground.</li>
+      <li><strong>4 &mdash; NOTIFY</strong> &mdash; Everything auto-executes, but you get notifications. "Hey, I just did this."</li>
+      <li><strong>5 &mdash; FULL AUTO</strong> &mdash; Full autonomy. The circuit breaker is still active (it catches runaway loops), but HELM drives. Buckle up.</li>
     </ul>
+
+    <div class="quote">Start at 3. That's what it's there for. Move the dial when you're ready. Nobody's judging.</div>
 
     <!-- ─── 8. SECURITY ─── -->
-    <h2 id="security">8. Security &amp; Privacy</h2>
+    <h2 id="security">8. The Vault (Security &amp; Privacy)</h2>
+
+    <p>We need to talk about security. Not because it's scary, but because we did something unusual and you deserve to know about it.</p>
 
     <div class="highlight">
-      <p><strong>IHP Capsule Protocol:</strong> Your API keys are not stored in plaintext. They are encrypted using IHP capsules with cryptographic data flow enforcement. A key classified as LOCAL <em>physically cannot decrypt</em> when used for a CLOUD destination. This is mathematical enforcement, not an if-statement.</p>
+      <p><strong>IHP Capsule Protocol:</strong> Your API keys are not stored in plaintext. They're encrypted using cryptographic capsules with mathematical data flow enforcement. A key classified as LOCAL <em>physically cannot decrypt</em> when used for a CLOUD destination. This isn't an if-statement checking a string. It's cryptography. The math won't let it happen. Like trying to put a square block through a round hole, except the hole is made of prime numbers.</p>
     </div>
 
-    <h3>SecurityBar</h3>
-    <p>The bar at the bottom of HELM shows real-time data flow:</p>
+    <h3>The SecurityBar</h3>
+    <p>That little bar at the bottom of HELM? That's your data flow monitor. In real time, it tells you exactly where your data is going:</p>
     <ul>
-      <li><code>// local :: no egress</code> &mdash; Using on-device AI, nothing left the phone</li>
-      <li><code>// cloud :: anthropic.com</code> &mdash; Data sent to a cloud provider</li>
+      <li><code>// local :: no egress</code> &mdash; everything stayed on your phone. Nothing left. Peace.</li>
+      <li><code>// cloud :: anthropic.com</code> &mdash; data went to Anthropic's servers. You chose this. You know.</li>
     </ul>
-    <p>Tap it to expand the <strong>Privacy Dashboard</strong> showing LOCAL/LAN/CLOUD breakdown and recent connections.</p>
+    <p>Tap it to expand the <strong>Privacy Dashboard</strong> &mdash; shows LOCAL/LAN/CLOUD breakdown and recent connections. No surprises. Ever.</p>
 
     <h3>Trust Profiles</h3>
-    <p>Control which data flow classes are allowed per workspace. A workspace with only LOCAL+LAN allowed will reject any request that would touch a cloud provider.</p>
+    <p>You can set rules per workspace. "This workspace is LOCAL+LAN only." Try to call a cloud provider from that workspace? Denied. Not by an if-statement &mdash; by the capsule refusing to decrypt. The math says no.</p>
 
-    <h3>What We Never Do</h3>
+    <h3>What We Will Never, Ever Do</h3>
+    <p>And I mean <em>never</em>. Not "never unless our investors make us." Never.</p>
     <ul>
-      <li>No telemetry or analytics (Firebase/Sentry disabled by default)</li>
-      <li>No phone-home or license validation</li>
-      <li>No API key access from the mobile app (keys live on your server)</li>
-      <li>No user data collection or sharing</li>
+      <li>No telemetry, no analytics. Firebase and Sentry are in the code but <strong>disabled by default</strong>.</li>
+      <li>No phone-home. No license server. No heartbeat check.</li>
+      <li>No access to your API keys from the mobile app. Keys live on your server. Period.</li>
+      <li>No data collection. No usage tracking. No "anonymized" anything.</li>
     </ul>
 
+    <div class="quote">We built this for people who are tired of being the product. You paid ten dollars. That makes you the customer. Remember when that's how things worked? We do.</div>
+
     <!-- ─── 9. TROUBLESHOOTING ─── -->
-    <h2 id="troubleshooting">9. Troubleshooting</h2>
+    <h2 id="troubleshooting">9. When Things Go Sideways</h2>
+    <p>Things go sideways. It's the nature of software, and of life. Here's how to unsideway them:</p>
 
     <div class="card">
       <h3>"Network error" in HELM</h3>
-      <p>Your phone can't reach the backend server. Check:</p>
+      <p>Your phone can't find your server. Don't panic. Check these things, in order:</p>
       <ul>
-        <li>Is the server running? (<code>docker compose ps</code>)</li>
-        <li>Are phone and server on the same network?</li>
-        <li>Is the URL correct in Settings? (include <code>/api/v1</code>)</li>
-        <li>Try using the server's LAN IP, not <code>localhost</code></li>
+        <li>Is the server actually running? (<code>docker compose ps</code> &mdash; look for "Up")</li>
+        <li>Are phone and server on the same WiFi network? (This is the #1 cause. Every time.)</li>
+        <li>Is the URL in Settings correct? It needs <code>/api/v1</code> at the end.</li>
+        <li>Try the server's LAN IP address, not <code>localhost</code>. Your phone doesn't know what your server calls "localhost."</li>
       </ul>
     </div>
 
     <div class="card">
       <h3>"Provider not initialized"</h3>
-      <p>The AI provider needs an API key. Go to Settings &rarr; tap Setup on the provider card &rarr; enter your key.</p>
+      <p>The AI provider needs an API key. You haven't given it one yet, or the key expired, or it was for the wrong thing. Go to <strong>Settings &rarr; AI Providers &rarr; Setup</strong> &rarr; paste a valid key.</p>
     </div>
 
     <div class="card">
       <h3>Phi-4 Mini says "not downloaded"</h3>
-      <p>Go to Settings &rarr; On-Device AI &rarr; Download. Requires ~2.3 GB free space and a WiFi connection for the initial download.</p>
+      <p>It needs to be downloaded first. <strong>Settings &rarr; On-Device AI &rarr; Download</strong>. ~2.3 GB. Needs WiFi for the download (after that, it's fully offline forever). Go make a sandwich. A good one.</p>
     </div>
 
     <div class="card">
       <h3>Workflows won't run</h3>
-      <p>Workflows require a cloud provider with tool access. Local AI (Phi-4) cannot execute tools. Connect Claude or OpenAI, then select it in HELM Controls.</p>
+      <p>Workflows need a cloud provider with tool access. Local AI (Phi-4) is brilliant but it can't pull triggers &mdash; it doesn't have hands, so to speak. Connect Claude or OpenAI in HELM Controls.</p>
     </div>
 
     <div class="card">
-      <h3>Backend database errors</h3>
-      <p>Run migrations:</p>
+      <h3>Database acting up</h3>
+      <p>Run the migrations. This fixes most things:</p>
       <pre>cd backend
 npx prisma migrate deploy</pre>
-      <p>If using a fresh database, also seed:</p>
+      <p>Fresh database? Also seed it:</p>
       <pre>npx prisma db seed</pre>
+      <p>Still broken? Check your <code>DATABASE_URL</code> in <code>.env</code>. Then check it again. Then check if Postgres is actually running.</p>
+    </div>
+
+    <div class="card">
+      <h3>Everything is on fire</h3>
+      <p>Take a breath. Delete the app. Reinstall it. The onboarding will walk you through setup again. Your backend data is safe on your server &mdash; the app is just the window into it.</p>
+      <p>If the server is the problem: <code>docker compose down && docker compose up -d</code>. Clean restart. Fresh containers. New day.</p>
     </div>
 
     <hr>
 
-    <p style="color:#666; font-size:0.85rem; margin-top:24px;">
+    <p style="color:#888; font-size:0.9rem; margin-top:24px; line-height: 1.8;">
+      Remember: every expert was once a beginner. And every great machine started with someone pressing the first button.
+    </p>
+
+    <p style="color:#666; font-size:0.85rem; margin-top:16px;">
       AiMANAC &mdash; Built by <a href="https://github.com/Everplay-Tech">Everplay-Tech</a><br>
       <a href="/privacy">Privacy Policy</a> &middot; <a href="mailto:support@llmtech.net">Contact</a>
     </p>
