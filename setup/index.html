@@ -168,12 +168,11 @@ docker compose up -d</pre>
     </div>
 
     <h3>Minimum .env</h3>
-    <pre>NODE_ENV=production
-PORT=3000
-DATABASE_URL=postgresql://user:pass@localhost:5432/aimanac
-REDIS_URL=redis://localhost:6379
-ENCRYPTION_KEY=your-64-char-hex-string
-JWT_SECRET=your-jwt-secret</pre>
+    <p>Copy <code>.env.production.example</code> to <code>.env</code> and fill in three values:</p>
+    <pre>ENCRYPTION_KEY=   # 64-char hex string (see .env file for generator command)
+JWT_SECRET=       # random secret
+JWT_REFRESH_SECRET=  # another random secret</pre>
+    <p>Database and Redis URLs are auto-configured by Docker Compose and Railway. You only set them manually if hosting separately.</p>
 
     <!-- ─── 4. PROVIDERS ─── -->
     <h2 id="providers">4. AI Providers</h2>
