@@ -124,55 +124,83 @@
     </div>
 
     <div class="highlight">
-      <p>Phi-4 handles conversation, setup guidance, and feature explanations. For running workflows and triggering tools, connect a cloud provider.</p>
+      <p>Phi-4 Mini is a 3.8-billion-parameter model quantized to 4-bit. It fits in ~2.3 GB and runs inference on your phone's GPU via Metal. It handles conversation, setup guidance, feature explanations, and general questions. For running workflows and triggering production tools, connect a cloud provider.</p>
     </div>
 
     <!-- ─── 3. BACKEND ─── -->
     <h2 id="backend">3. Your Server</h2>
-    <p>AiMANAC requires a self-hosted backend. This is where API keys are stored (encrypted via IHP capsules) and where AI requests get processed. Run it on your computer, a Raspberry Pi, a VPS, wherever you want.</p>
+    <p>AiMANAC requires a backend server. This is where your API keys are stored (encrypted via IHP capsules) and where AI requests are processed. You own this server. Three ways to run it:</p>
 
-    <h3>Docker Quick Start</h3>
-    <pre>git clone https://github.com/Everplay-Tech/AiMANAC.git
+    <div class="card">
+      <h3>Option A: Railway (Recommended for individuals)</h3>
+      <p>Railway is a cloud platform. You push code, it runs. Postgres, Redis, and your backend all in one place. Reachable from anywhere &mdash; phone on WiFi, cellular, anywhere.</p>
+      <p>Cost: ~$5-10/month based on usage.</p>
+      <div class="step">
+        <span class="step-num">1</span>
+        <div class="step-content"><p>Sign up at <a href="https://railway.com">railway.com</a></p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <div class="step-content"><p>Create a new project. Add a <strong>PostgreSQL</strong> database and a <strong>Redis</strong> instance from the dashboard.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <div class="step-content"><p>Add a new service from your GitHub repo (<code>Everplay-Tech/AiMANAC</code>), set the root directory to <code>/backend</code></p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">4</span>
+        <div class="step-content"><p>Set environment variables: <code>ENCRYPTION_KEY</code>, <code>JWT_SECRET</code>, <code>JWT_REFRESH_SECRET</code>, <code>SECRETS_PROVIDER=environment</code>, <code>NODE_ENV=production</code>. Reference the Postgres and Redis URLs from the database services.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">5</span>
+        <div class="step-content"><p>Add a custom domain. Use an opaque subdomain (not <code>backend.mysite.com</code>) &mdash; something like <code>hq-a3f9c2.yourdomain.com</code>. Point a CNAME record at it from your DNS provider.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">6</span>
+        <div class="step-content"><p>In AiMANAC Settings, enter: <code>https://your-subdomain.yourdomain.com/api/v1</code></p></div>
+      </div>
+      <div class="warning">
+        <p><strong>Security note:</strong> Use an opaque subdomain. Don't use predictable names like <code>backend.aimanac.example.com</code>. Your server URL is a credential &mdash; treat it like one.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Option B: Docker on your own machine</h3>
+      <p>Run the backend on any computer &mdash; your Mac, a Raspberry Pi, a $5/month VPS. Docker Compose bundles everything.</p>
+      <pre>git clone https://github.com/Everplay-Tech/AiMANAC.git
 cd AiMANAC/backend
-cp .env.example .env
-# Edit .env — set ENCRYPTION_KEY (any random 64-char hex string)
+cp .env.production.example .env
+# Fill in ENCRYPTION_KEY, JWT_SECRET, JWT_REFRESH_SECRET
 docker compose up -d</pre>
+      <p>This starts the backend, PostgreSQL, and Redis. To reach it from your phone outside your home network, use <a href="https://tailscale.com">Tailscale</a> (mesh VPN) or a <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a>.</p>
+    </div>
 
-    <p>This starts:</p>
-    <ul>
-      <li><strong>AiMANAC Backend</strong> on port 3000</li>
-      <li><strong>PostgreSQL 14</strong> with pgvector on port 5432</li>
-      <li><strong>Redis 7</strong> on port 6379</li>
-    </ul>
+    <div class="card">
+      <h3>Option C: Local network only</h3>
+      <p>Same Docker setup, but only accessible on your WiFi. Simplest option if you only use AiMANAC at home or work.</p>
+      <p>In AiMANAC Settings, enter: <code>http://YOUR_SERVER_IP:3000/api/v1</code></p>
+    </div>
 
-    <h3>Connect Your Phone</h3>
+    <h3>Connecting Your Phone</h3>
     <div class="step">
       <span class="step-num">1</span>
-      <div class="step-content"><p>Find your server's IP address (e.g., <code>192.168.1.50</code>)</p></div>
-    </div>
-    <div class="step">
-      <span class="step-num">2</span>
       <div class="step-content"><p>In AiMANAC, go to <strong>Settings</strong></p></div>
     </div>
     <div class="step">
-      <span class="step-num">3</span>
-      <div class="step-content"><p>Under <strong>Backend Server</strong>, enter: <code>http://192.168.1.50:3000/api/v1</code></p></div>
+      <span class="step-num">2</span>
+      <div class="step-content"><p>Under <strong>Backend Server</strong>, enter your server URL (Railway domain or local IP)</p></div>
     </div>
     <div class="step">
-      <span class="step-num">4</span>
+      <span class="step-num">3</span>
       <div class="step-content"><p>Tap <strong>Connect</strong> &mdash; the status dot turns green</p></div>
     </div>
 
-    <div class="warning">
-      <p><strong>Note:</strong> Phone and server must be on the same WiFi network. For remote access, use a VPN or reverse proxy with HTTPS.</p>
-    </div>
-
-    <h3>Minimum .env</h3>
-    <p>Copy <code>.env.production.example</code> to <code>.env</code> and fill in three values:</p>
-    <pre>ENCRYPTION_KEY=   # 64-char hex string (see .env file for generator command)
-JWT_SECRET=       # random secret
-JWT_REFRESH_SECRET=  # another random secret</pre>
-    <p>Database and Redis URLs are auto-configured by Docker Compose and Railway. You only set them manually if hosting separately.</p>
+    <h3>Environment Variables</h3>
+    <p>Three required secrets. Generate each with: <code>node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"</code></p>
+    <pre>ENCRYPTION_KEY=       # 64-char hex — encrypts API keys via IHP capsules
+JWT_SECRET=           # auth token signing
+JWT_REFRESH_SECRET=   # refresh token signing</pre>
+    <p>Database and Redis URLs are auto-configured by Docker Compose and Railway.</p>
 
     <!-- ─── 4. PROVIDERS ─── -->
     <h2 id="providers">4. AI Providers</h2>
