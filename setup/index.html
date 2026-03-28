@@ -177,37 +177,37 @@ JWT_SECRET=your-jwt-secret</pre>
 
     <!-- ─── 4. PROVIDERS ─── -->
     <h2 id="providers">4. AI Providers</h2>
-    <p>AiMANAC supports 10 providers. You need one to get started. API keys are stored encrypted on your server, never on your phone.</p>
+    <p>An API key is a password that lets AiMANAC talk to an AI provider on your behalf. You get one from the provider's website, paste it into Settings, and you're connected. Keys are stored encrypted on your server, never on your phone.</p>
 
     <div class="provider-grid">
       <div class="provider-card">
-        <div class="name">Claude <span class="badge">RECOMMENDED</span></div>
-        <div class="desc">Best reasoning and tool support. Works best with HELM production tools.</div>
+        <div class="name">Claude</div>
+        <div class="desc">Anthropic</div>
         <div class="price">anthropic.com/api</div>
       </div>
       <div class="provider-card">
         <div class="name">OpenAI</div>
-        <div class="desc">GPT-4, o-series reasoning models. Strong all-rounder.</div>
+        <div class="desc">GPT-4, o-series</div>
         <div class="price">platform.openai.com</div>
       </div>
       <div class="provider-card">
         <div class="name">Google Gemini</div>
-        <div class="desc">Fast and capable. Good for bulk processing.</div>
+        <div class="desc">Google</div>
         <div class="price">ai.google.dev</div>
       </div>
       <div class="provider-card">
         <div class="name">DeepSeek</div>
-        <div class="desc">Cheapest cloud option. Costs almost nothing for most tasks.</div>
+        <div class="desc">DeepSeek</div>
         <div class="price">platform.deepseek.com</div>
       </div>
       <div class="provider-card">
         <div class="name">xAI (Grok)</div>
-        <div class="desc">Fast conversation. Good for quick back-and-forth.</div>
+        <div class="desc">xAI</div>
         <div class="price">console.x.ai</div>
       </div>
       <div class="provider-card">
         <div class="name">Custom Endpoints</div>
-        <div class="desc">Ollama, LM Studio, Venice AI, or any OpenAI-compatible API.</div>
+        <div class="desc">Ollama, LM Studio, Venice AI, or any OpenAI-compatible API</div>
         <div class="price">Self-hosted</div>
       </div>
     </div>
@@ -272,7 +272,9 @@ JWT_SECRET=your-jwt-secret</pre>
       <li>Save to Library as artifacts</li>
     </ul>
 
-    <p>4 workflows per workspace. 4 lanes per workflow. 4 modules per lane. 64 modules max. Constraints breed creativity.</p>
+    <p>4 workflows per workspace. 4 lanes per workflow. 4 modules per lane. 64 modules max.</p>
+
+    <p>You build it, HELM runs it. Or HELM builds it and HELM runs it. Or you build it and you run it. Your call &mdash; think laterally.</p>
 
     <h3>Module Types</h3>
     <ul>
