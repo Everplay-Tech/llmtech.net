@@ -81,7 +81,7 @@
       <li><strong>HELM</strong> &mdash; AI command center with 6 production control tools</li>
       <li><strong>4-lane production system</strong> &mdash; DAW-style workflow automation</li>
       <li><strong>IHP cryptographic security</strong> &mdash; mathematical data flow enforcement</li>
-      <li><strong>Dual themes</strong> &mdash; Terminal and Executive</li>
+      <li><strong>4 themes</strong> &mdash; Terminal, Executive, Mecha, and Accessible</li>
     </ul>
 
     <div class="highlight">
@@ -284,13 +284,23 @@ JWT_REFRESH_SECRET=   # refresh token signing</pre>
 
     <h3>Four Lanes</h3>
     <p>
-      <span class="lane" style="background:#00BCD4;"></span><strong>&#9670; Lane 1 &mdash; Generation</strong> (Cyan) &mdash; ideas originate<br>
-      <span class="lane" style="background:#7C3AED;"></span><strong>&#9679; Lane 2 &mdash; Processing</strong> (Violet) &mdash; ideas get shaped<br>
-      <span class="lane" style="background:#EC4899;"></span><strong>&#9650; Lane 3 &mdash; Analysis</strong> (Pink) &mdash; ideas get checked<br>
-      <span class="lane" style="background:#10B981;"></span><strong>&#9632; Lane 4 &mdash; Output</strong> (Green) &mdash; results go out
+      <span class="lane" style="background:#00BCD4;"></span><strong>&#9670; Lane 1</strong> (Cyan)<br>
+      <span class="lane" style="background:#7C3AED;"></span><strong>&#9679; Lane 2</strong> (Violet)<br>
+      <span class="lane" style="background:#EC4899;"></span><strong>&#9650; Lane 3</strong> (Pink)<br>
+      <span class="lane" style="background:#10B981;"></span><strong>&#9632; Lane 4</strong> (Green)
     </p>
 
-    <p>Each lane holds up to 4 modules. Modules can:</p>
+    <p><strong>Lanes have no fixed roles.</strong> They're mixer channels &mdash; what they do is what you wire into them. Every module accepts any input source and routes to any output destination.</p>
+
+    <p>You can condense a full workflow into a single lane (4 modules chaining top-to-bottom), spread it across all four, or use any combination. Here are some example patterns &mdash; not prescriptions:</p>
+    <ul>
+      <li><strong>&#9670; Generate &rarr; &#9679; Process &rarr; &#9650; Analyze &rarr; &#9632; Output</strong> &mdash; classic 4-stage pipeline</li>
+      <li><strong>&#9670; Draft &rarr; &#9670; Revise &rarr; &#9670; Format &rarr; &#9670; Publish</strong> &mdash; single-lane pipeline</li>
+      <li><strong>&#9670; Thesis &rarr; &#9679; Antithesis &rarr; &#9650; Synthesis</strong> &mdash; dialectic reasoning</li>
+      <li><strong>&#9670; Research &rarr; &#9679;&#9632; Two parallel outputs</strong> &mdash; fan-out via sends</li>
+    </ul>
+
+    <p>Modules can:</p>
     <ul>
       <li>Chain within a lane (module 1 output feeds module 2 input)</li>
       <li>Route to other lanes (direct or send/copy)</li>
